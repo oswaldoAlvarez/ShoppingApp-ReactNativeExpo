@@ -1,6 +1,6 @@
 import { useRouter } from "expo-router";
 import { View, Text } from "react-native";
-import { styles } from "./styles";
+import { styles } from "../../styles/catalogue/Catalogue.styles";
 
 export default function Catalogue() {
   const router = useRouter();

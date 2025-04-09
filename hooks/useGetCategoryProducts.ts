@@ -2,9 +2,11 @@ import { IProduct } from "@/interfaces/product.interface";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-export const fetchProducts = async (): Promise<IProduct[]> => {
+export const fetchCategoryProducts = async (): Promise<any[]> => {
   try {
-    const { data } = await axios.get<any>(`https://fakestoreapi.com/products/`);
+    const { data } = await axios.get<any>(
+      `https://fakestoreapi.com/products/categories`
+    );
 
     return data;
   } catch (error) {
@@ -12,15 +14,15 @@ export const fetchProducts = async (): Promise<IProduct[]> => {
   }
 };
 
-export const useGetProducts = () => {
+export const useGetCategoryProducts = () => {
   const { data = [], isLoading } = useQuery({
-    queryKey: ["products"],
-    queryFn: () => fetchProducts(),
+    queryKey: ["categoryProducts"],
+    queryFn: () => fetchCategoryProducts(),
     staleTime: 1000 * 60 * 60,
   });
 
   return {
-    products: data,
+    categoryProducts: data,
     loading: isLoading,
   };
 };

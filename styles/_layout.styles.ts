@@ -5,4 +5,15 @@ export const styles = StyleSheet.create({
     width: "100%",
     height: Platform.OS === "ios" ? 120 : 100,
   },
+  androidRipple: {
+    color: "transparent",
+  },
+  header: {
+    height: 100,
+  },
+  headerTitle: {
+    fontWeight: "bold",
+    fontSize: 20,
+    color: "#fff",
+  },
 });

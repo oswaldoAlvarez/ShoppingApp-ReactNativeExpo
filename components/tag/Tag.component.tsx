@@ -4,11 +4,12 @@ import { styles } from "./Tag.styles";
 
 interface ITag {
   item: string;
+  onPress: () => void;
 }
 
-export const Tag = ({ item }: ITag) => {
+export const Tag = ({ item, onPress }: ITag) => {
   return (
-    <TouchableOpacity activeOpacity={0.6}>
+    <TouchableOpacity onPress={onPress} activeOpacity={0.6}>
       <TextView textStyles={styles.text} contentStyles={styles.textContainer}>
         {item}
       </TextView>

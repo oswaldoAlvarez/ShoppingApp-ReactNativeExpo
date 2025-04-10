@@ -1,53 +1,78 @@
-import { FlatList, ScrollView, TouchableOpacity, View } from "react-native";
+import React, { useState } from "react";
+import {
+  ActivityIndicator,
+  FlatList,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { ProductCard, Tag, TextView } from "@/components";
 import { styles } from "../styles/App.styles";
 import { useGetCategoryProducts, useGetProducts } from "@/hooks";
 
-const ImgSize = 150;
-
 export default function Page() {
-  const { products } = useGetProducts();
+  const [selectedCategory, setSelectedCategory] = useState<string | undefined>(
+    undefined
+  );
+
+  const { products, loading } = useGetProducts(selectedCategory);
   const { categoryProducts } = useGetCategoryProducts();
 
+  const handleTagPress = (category: string) => {
+    setSelectedCategory(category);
+  };
+
+  const showAllProducts = () => {
+    setSelectedCategory(undefined);
+  };
+
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <TextView
-        align="flex-start"
-        contentStyles={styles.titleContainer}
-        textStyles={styles.title}
-      >
-        Catalogue
-      </TextView>
-      <FlatList
-        data={categoryProducts}
-        keyExtractor={(product) => String(product)}
-        contentContainerStyle={styles.catalogueContainer}
-        renderItem={({ item }) => <Tag item={item} />}
-        style={{ marginTop: 16 }}
-        showsHorizontalScrollIndicator={false}
-        horizontal
-      />
-      <TextView
-        align="flex-start"
-        contentStyles={styles.titleContainer}
-        textStyles={styles.title}
-      >
-        Featured
-      </TextView>
-      {/* <FlatList
-        data={products.slice(0, 4)}
-        keyExtractor={(product) => String(product.id)}
-        renderItem={({ item }) => <ProductCard item={item} />}
-        numColumns={2}
-        showsVerticalScrollIndicator={false}
-      /> */}
-      <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-        {products.slice(0, 4).map((item) => (
-          <View key={String(item.id)} style={{ width: "50%" }}>
-            <ProductCard item={item} />
+    <FlatList
+      data={products}
+      keyExtractor={(product) => String(product.id)}
+      renderItem={({ item }) => <ProductCard item={item} />}
+      numColumns={2}
+      showsVerticalScrollIndicator={false}
+      columnWrapperStyle={styles.columWrapper}
+      ListHeaderComponent={
+        <>
+          <View style={styles.containerHeader}>
+            <TextView
+              contentStyles={styles.titleContainer}
+              textStyles={styles.title}
+            >
+              Catalogue
+            </TextView>
+            <TouchableOpacity activeOpacity={0.6} onPress={showAllProducts}>
+              <TextView textStyles={styles.seeAllProducts}>
+                See all products
+              </TextView>
+            </TouchableOpacity>
           </View>
-        ))}
-      </View>
-    </ScrollView>
+          <FlatList
+            data={categoryProducts}
+            keyExtractor={(product) => String(product)}
+            renderItem={({ item }) => (
+              <Tag item={item} onPress={() => handleTagPress(item)} />
+            )}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.catalogueContainer}
+            style={styles.categorySlice}
+          />
+          <TextView
+            contentStyles={[styles.titleContainer, styles.marginTop]}
+            textStyles={styles.title}
+          >
+            Featured
+          </TextView>
+          {loading && (
+            <View style={styles.waiter}>
+              <ActivityIndicator size="large" color="#0000ff" />
+              <TextView>Loading...</TextView>
+            </View>
+          )}
+        </>
+      }
+    />
   );
 }

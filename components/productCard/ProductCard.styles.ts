@@ -3,11 +3,11 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   touchableContainer: {
     marginVertical: 20,
-    marginHorizontal: 20,
     width: 150,
   },
   img: {
-    borderRadius: 8,
+    width: "100%",
+    height: "100%",
   },
   rateContainer: {
     flexDirection: "row",
@@ -34,5 +34,13 @@ export const styles = StyleSheet.create({
   price: {
     fontSize: 20,
     fontWeight: "bold",
+  },
+  imgContainer: {
+    backgroundColor: "white",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    height: 150,
+    borderRadius: 8,
   },
 });

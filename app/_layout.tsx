@@ -40,11 +40,9 @@ const screenOptions = ({ route }: IRoute): BottomTabNavigationOptions => ({
     let iconName: IoniconsName = "home";
 
     if (route.name === "index") {
-      iconName = "home";
-    } else if (route.name === "catalogue/index") {
       iconName = "storefront";
-    } else if (route.name === "profile/index") {
-      iconName = "person";
+    } else if (route.name === "cart/index") {
+      iconName = "cart";
     }
 
     return <Ionicons name={iconName} size={size} color={color} />;
@@ -69,17 +67,18 @@ export default function RootLayout() {
           }}
         />
         <Tabs.Screen
-          name="catalogue/index"
+          name="cart/index"
           options={{
-            title: "Catalogue",
+            title: "Cart",
             headerTitleAlign: "center",
           }}
         />
         <Tabs.Screen
-          name="profile/index"
+          name="product/index"
           options={{
-            title: "Profile",
-            headerTitleAlign: "center",
+            href: null,
+            headerShown: false,
+            tabBarStyle: { display: "none" },
           }}
         />
         {/* <Tabs.Screen name="+not-found" /> */}

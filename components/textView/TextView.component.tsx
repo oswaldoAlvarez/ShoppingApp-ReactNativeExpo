@@ -5,7 +5,7 @@ type alignContentType = "center" | "flex-start" | "flex-end";
 
 interface ITextView extends TextProps {
   children: React.ReactNode;
-  contentStyles?: ViewStyle;
+  contentStyles?: ViewStyle | ViewStyle[];
   textStyles?: TextStyle;
   align?: alignContentType;
 }

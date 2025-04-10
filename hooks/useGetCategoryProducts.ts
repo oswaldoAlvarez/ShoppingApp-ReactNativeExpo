@@ -1,10 +1,9 @@
-import { IProduct } from "@/interfaces/product.interface";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-export const fetchCategoryProducts = async (): Promise<any[]> => {
+const fetchCategoryProducts = async (): Promise<string> => {
   try {
-    const { data } = await axios.get<any>(
+    const { data } = await axios.get<string>(
       `https://fakestoreapi.com/products/categories`
     );
 

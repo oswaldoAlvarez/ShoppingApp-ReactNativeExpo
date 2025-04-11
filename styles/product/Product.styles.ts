@@ -62,4 +62,11 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     flex: 1,
   },
+  productDescription: {
+    fontWeight: 700,
+    fontSize: 24,
+  },
+  productContainer: {
+    marginHorizontal: 16,
+  },
 });

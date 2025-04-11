@@ -9,7 +9,7 @@ import { ProductCard, Tag, TextView } from "@/components";
 import { styles } from "../styles/App.styles";
 import { useGetCategoryProducts, useGetProducts } from "@/hooks";
 
-export default function Page() {
+export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string | undefined>(
     undefined
   );
@@ -40,7 +40,7 @@ export default function Page() {
               contentStyles={styles.titleContainer}
               textStyles={styles.title}
             >
-              Catalogue
+              Categories
             </TextView>
             <TouchableOpacity activeOpacity={0.6} onPress={showAllProducts}>
               <TextView textStyles={styles.seeAllProducts}>
@@ -63,7 +63,7 @@ export default function Page() {
             contentStyles={[styles.titleContainer, styles.marginTop]}
             textStyles={styles.title}
           >
-            Featured
+            Products
           </TextView>
           {loading && (
             <View style={styles.waiter}>

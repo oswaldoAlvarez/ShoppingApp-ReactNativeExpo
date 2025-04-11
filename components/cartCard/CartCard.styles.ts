@@ -35,5 +35,10 @@ export const styles = StyleSheet.create({
     width: "20%",
     height: "100%",
     justifyContent: "center",
+    alignItems: "center",
+  },
+  quantity: {
+    fontSize: 16,
+    marginVertical: 8,
   },
 });

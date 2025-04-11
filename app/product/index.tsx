@@ -72,8 +72,8 @@ export default function Product() {
             <View style={styles.separatorContainer}>
               <View style={styles.separator} />
             </View>
-            <View style={{ marginHorizontal: 16 }}>
-              <TextView textStyles={{ fontWeight: 700, fontSize: 24 }}>
+            <View style={styles.productContainer}>
+              <TextView textStyles={styles.productDescription}>
                 Product details
               </TextView>
               <TextView textStyles={styles.details}>

@@ -19,9 +19,19 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 3. If you want start with IOS o androd:
 
    ```bash
+    -npx expo start
     -Select Metro
     -Press i for IOS
     -Press a for Android
+   ```
+
+4 - if you have problem with the libraries:
+
+ ```bash
+    rm -rf node_modules .expo .expo-shared .next .cache
+    rm -f package-lock.json yarn.lock
+    npm i
+    npx expo start
    ```
 
 (to see the login need to go for app/_layout.tsx and change {privateStack} to {publicStack} and save)

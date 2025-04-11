@@ -146,7 +146,7 @@ export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* {user ? privateStack : publicStack} */}
-      {publicStack}
+      {privateStack}
     </QueryClientProvider>
   );
 }

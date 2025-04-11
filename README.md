@@ -38,6 +38,8 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 design used to replicate [Design](https://www.behance.net/gallery/107120839/Free-Mobile-AppE-commerce-templateFigmaUIStoreShop)
 
+{I had a unkown error when i try login with the user - password and for this reason the login not working) 
+
 In the output, you'll find options to open the app in a
 
 - [development build](https://docs.expo.dev/develop/development-builds/introduction/)

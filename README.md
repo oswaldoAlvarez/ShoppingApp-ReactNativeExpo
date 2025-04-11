@@ -26,6 +26,8 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 (to see the login need to go for app/_layout.tsx and change {privateStack} to {publicStack} and save)
 
+design used to replicate [Design](https://www.behance.net/gallery/107120839/Free-Mobile-AppE-commerce-templateFigmaUIStoreShop)
+
 In the output, you'll find options to open the app in a
 
 - [development build](https://docs.expo.dev/develop/development-builds/introduction/)

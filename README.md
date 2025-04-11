@@ -16,6 +16,16 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
     npx expo start
    ```
 
+3. If you want start with IOS o androd:
+
+   ```bash
+    -Select Metro
+    -Press i for IOS
+    -Press a for Android
+   ```
+
+(to see the login need to go for app/_layout.tsx and change {privateStack} to {publicStack} and save)
+
 In the output, you'll find options to open the app in a
 
 - [development build](https://docs.expo.dev/develop/development-builds/introduction/)

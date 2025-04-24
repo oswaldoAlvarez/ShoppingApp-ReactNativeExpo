@@ -16,6 +16,30 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
     npx expo start
    ```
 
+3. If you want start with IOS o androd:
+
+   ```bash
+    -npx expo start
+    -Select Metro
+    -Press i for IOS
+    -Press a for Android
+   ```
+
+4 - if you have problem with the libraries:
+
+ ```bash
+    rm -rf node_modules .expo .expo-shared .next .cache
+    rm -f package-lock.json yarn.lock
+    npm i
+    npx expo start
+   ```
+
+(to see the login need to go for app/_layout.tsx and change {privateStack} to {publicStack} and save)
+
+design used to replicate [Design](https://www.behance.net/gallery/107120839/Free-Mobile-AppE-commerce-templateFigmaUIStoreShop)
+
+{I had a unkown error when i try login with the user - password and for this reason the login not working) 
+
 In the output, you'll find options to open the app in a
 
 - [development build](https://docs.expo.dev/develop/development-builds/introduction/)

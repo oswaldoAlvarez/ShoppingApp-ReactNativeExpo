@@ -4,11 +4,12 @@ import { styles } from "./Btn.styles";
 
 interface IBtn {
   text: string;
+  onPress: () => void;
 }
 
-export const Btn = ({ text }: IBtn) => {
+export const Btn = ({ text, onPress }: IBtn) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <TextView textStyles={styles.text}>{text}</TextView>
     </TouchableOpacity>
   );

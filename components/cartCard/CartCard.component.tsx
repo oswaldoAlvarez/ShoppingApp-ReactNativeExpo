@@ -1,6 +1,6 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Image } from "react-native";
 import { styles } from "./CartCard.styles";
-import { useGetProductById } from "@/hooks";
+import { useCartStore, useGetProductById } from "@/hooks";
 import { TextView } from "../textView/TextView.component";
 import { Btn } from "../btn/Btn.component";
 
@@ -13,6 +13,9 @@ interface ICartCard {
 
 export const CartCard = ({ id, quantity }: ICartCard) => {
   const { productById, loading } = useGetProductById(id);
+
+  const addToCart = useCartStore((state) => state.addToCart);
+  const reduceCart = useCartStore((state) => state.reduceCart);
 
   if (loading || !productById) {
     return (
@@ -35,9 +38,9 @@ export const CartCard = ({ id, quantity }: ICartCard) => {
         <TextView textStyles={styles.price}>${productById.price}</TextView>
       </View>
       <View style={styles.counterContainer}>
-        <Btn text="+" />
+        <Btn text="+" onPress={() => addToCart(id)} />
         <TextView textStyles={styles.quantity}>{quantity}</TextView>
-        <Btn text="-" />
+        <Btn text="-" onPress={() => reduceCart(id)} />
       </View>
     </View>
   );

@@ -1,9 +1,10 @@
-import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
+import { useState } from "react";
+import { View, TouchableOpacity, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./StickyBottomBar.styles";
 import { useRouter } from "expo-router";
 import { IProduct } from "@/interfaces/product.interface";
-import { addProductToCart } from "@/actions/addProductToCard";
+import { useCartStore } from "@/hooks";
 
 interface IStickyBottomBar {
   item: IProduct;
@@ -11,9 +12,23 @@ interface IStickyBottomBar {
 }
 
 export const StickyBottomBar = ({ item, loading }: IStickyBottomBar) => {
+  const [added, setAdded] = useState(false);
+
   const router = useRouter();
+  const addToCart = useCartStore((state) => state.addToCart);
 
   const handleBack = () => router.back();
+
+  const handleAddToCart = () => {
+    if (added) return;
+
+    addToCart(item.id);
+    setAdded(true);
+
+    setTimeout(() => {
+      setAdded(false);
+    }, 1500);
+  };
 
   return (
     <View style={styles.container}>
@@ -21,14 +36,22 @@ export const StickyBottomBar = ({ item, loading }: IStickyBottomBar) => {
         <Ionicons name="arrow-back" size={24} color="#555" />
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => (addProductToCart(1, item.id), handleBack())}
+        onPress={handleAddToCart}
         style={[
           styles.button,
-          { backgroundColor: loading ? "lightgray" : "#E5BB47" },
+          {
+            backgroundColor: added
+              ? "#4CAF50"
+              : loading
+              ? "lightgray"
+              : "#E5BB47",
+          },
         ]}
-        disabled={loading}
+        disabled={loading || added}
       >
-        <Text style={styles.buttonText}>Add to Cart</Text>
+        <Text style={styles.buttonText}>
+          {added ? "✔ Added to Cart" : "Add to Cart"}
+        </Text>
       </TouchableOpacity>
     </View>
   );

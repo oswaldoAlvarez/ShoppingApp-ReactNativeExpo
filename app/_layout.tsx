@@ -16,6 +16,7 @@ import { useAuthStore } from "@/store/useAuthStore";
 import { Amplify } from "aws-amplify";
 import { awsmobile } from "@/aws-exports";
 import { initializeAuth } from "@/auth/initializeAuth";
+import { HeaderDeleteCart } from "@/components";
 
 Amplify.configure({
   Auth: {
@@ -90,6 +91,7 @@ const privateStack = (
       options={{
         title: "Cart",
         headerTitleAlign: "center",
+        headerRight: () => <HeaderDeleteCart />,
       }}
     />
     <Tabs.Screen
